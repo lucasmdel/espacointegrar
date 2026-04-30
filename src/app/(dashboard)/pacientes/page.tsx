@@ -3,13 +3,15 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
-import type { Paciente, Aplicacao } from '@/types'
+import type { Paciente } from '@/types'
+
+type AplicacaoResumo = { id: string; paciente_id: string | null }
 
 export default function PacientesPage() {
   const router = useRouter()
   const supabase = createClient()
   const [pacientes, setPacientes] = useState<Paciente[]>([])
-  const [aplicacoes, setAplicacoes] = useState<Aplicacao[]>([])
+  const [aplicacoes, setAplicacoes] = useState<AplicacaoResumo[]>([])
   const [filtro, setFiltro] = useState('')
   const [loading, setLoading] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
