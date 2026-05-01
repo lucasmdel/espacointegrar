@@ -56,41 +56,41 @@ Três tabelas principais, todas com Row Level Security (cada psicólogo vê apen
 | `pacientes` | Pacientes cadastrados por cada psicólogo |
 | `aplicacoes` | Cada aplicação de instrumento (score, respostas, data) |
 
-## Como adicionar um novo instrumento (ex: PHQ-9)
+## Como adicionar um novo instrumento (ex: GAD-7)
 
 Siga estes 4 passos:
 
-### 1. Criar o arquivo de perguntas em `src/lib/phq.ts`
+**Instrumentos já implementados:** SRQ-20 (`src/lib/srq.ts`) e PHQ-9 (`src/lib/phq.ts`).
+
+### 1. Criar o arquivo de perguntas em `src/lib/gad.ts`
 
 ```typescript
-export const PHQ_QUESTIONS = [
-  'Pouco interesse ou prazer em fazer as coisas?',
-  'Se sentir para baixo, deprimido(a) ou sem perspectiva?',
-  // ... 9 perguntas no total
+export const GAD_QUESTIONS = [
+  'Sentir-se nervoso(a), ansioso(a) ou no limite',
+  // ... 7 perguntas no total
 ]
-
-export const PHQ_CUTOFF = 10  // ponto de corte clínico
+// mesma escala do PHQ-9: 0 = Nenhuma vez … 3 = Quase todos os dias
+export const GAD_CUTOFF = 10
 ```
 
 ### 2. Ativar o card em `src/app/(dashboard)/aplicar/page.tsx`
 
-Encontre o card do PHQ-9 (está com `className="instrumento-card locked"`) e:
+Encontre o card do GAD-7 (está com `className="instrumento-card locked"`) e:
 - Remova a classe `locked`
-- Troque `onClick` para `() => router.push('/aplicar/phq')`
-- Mude o badge de `badge-soon` para `badge-ativo` e o texto para `Disponível`
+- Troque `onClick` para `() => router.push('/aplicar/gad')`
+- Mude o badge de `badge-soon` para `badge-ativo`
 
-### 3. Criar a página do formulário em `src/app/(dashboard)/aplicar/phq/page.tsx`
+### 3. Criar a página do formulário em `src/app/(dashboard)/aplicar/gad/page.tsx`
 
-Copie o arquivo `src/app/(dashboard)/aplicar/srq/page.tsx` como base e adapte:
-- Importe `PHQ_QUESTIONS` e `PHQ_CUTOFF` de `@/lib/phq`
-- Ajuste o número de questões (9 em vez de 20)
-- Ajuste a paginação (ex: 3 por página em vez de 5)
-- Mude `instrumento: 'SRQ-20'` para `instrumento: 'PHQ-9'` no insert do Supabase
-- Adapte a lógica de score (PHQ usa escala 0–3 por questão, não sim/não)
+Copie `src/app/(dashboard)/aplicar/phq/page.tsx` como base e adapte:
+- Importe de `@/lib/gad`
+- Ajuste o número de questões (7)
+- Mude `instrumento: 'PHQ-9'` para `instrumento: 'GAD-7'`
 
-### 4. Atualizar a métrica de instrumentos ativos no dashboard
+### 4. Atualizar resultado e dashboard
 
-Em `src/app/(dashboard)/dashboard/page.tsx`, mude o valor fixo `1` para `2` no card "Instrumentos ativos".
+- Em `resultado/[id]/page.tsx`, adicione a lógica de severidade do GAD-7
+- Em `dashboard/page.tsx`, atualize o contador de instrumentos ativos
 
 ## Convenções do projeto
 

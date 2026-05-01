@@ -114,6 +114,18 @@ body { font-family: var(--font-inter), 'Inter', sans-serif; background: var(--gr
 .act-name { font-size: 13px; font-weight: 500; }
 .act-meta { font-size: 11px; color: var(--gray-500); margin-top: 1px; }
 
+/* ── BANNER PHQ extras ── */
+.res-banner.amber   { background: var(--amber-bg);   border: 1px solid var(--amber-border); }
+.res-banner.moderado { background: #FFF0E6; border: 1px solid #F5C8A0; }
+.amber   .score-circle  { background: var(--amber); }
+.moderado .score-circle { background: #D4700A; }
+.amber   .banner-txt h3 { color: var(--amber); }
+.moderado .banner-txt h3 { color: #D4700A; }
+
+/* botões PHQ de frequência */
+.phq-opts { flex-direction: column; gap: 6px; }
+.phq-opts .q-opt { text-align: left; padding: 10px 14px; }
+
 /* ── BADGES ── */
 .badge { padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; flex-shrink: 0; }
 .badge-clinico { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }

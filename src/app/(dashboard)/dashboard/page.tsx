@@ -63,8 +63,8 @@ export default function DashboardPage() {
         </div>
         <div className="metric-card">
           <div className="metric-label">Instrumentos ativos</div>
-          <div className="metric-value">1</div>
-          <div className="metric-sub">SRQ-20 disponível</div>
+          <div className="metric-value">2</div>
+          <div className="metric-sub">SRQ-20 e PHQ-9</div>
         </div>
       </div>
 
@@ -108,13 +108,13 @@ export default function DashboardPage() {
             </div>
             <span className="badge badge-ativo">Ativo</span>
           </div>
-          <div className="activity-row" style={{ opacity: 0.5 }}>
-            <div className="av" style={{ fontSize: 11, fontWeight: 700, background: 'var(--gray-100)', color: 'var(--gray-500)' }}>PHQ</div>
+          <div className="activity-row">
+            <div className="av" style={{ fontSize: 11, fontWeight: 700 }}>PHQ</div>
             <div className="act-info">
               <div className="act-name">PHQ-9</div>
               <div className="act-meta">Depressão · 9 itens</div>
             </div>
-            <span className="badge badge-soon">Em breve</span>
+            <span className="badge badge-ativo">Ativo</span>
           </div>
           <div className="activity-row" style={{ opacity: 0.5 }}>
             <div className="av" style={{ fontSize: 11, fontWeight: 700, background: 'var(--gray-100)', color: 'var(--gray-500)' }}>GAD</div>

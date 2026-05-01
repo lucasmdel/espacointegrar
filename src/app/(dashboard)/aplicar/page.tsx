@@ -27,15 +27,15 @@ export default function AplicarPage() {
           </div>
         </div>
 
-        <div className="instrumento-card locked">
+        <div className="instrumento-card" onClick={() => router.push('/aplicar/phq')}>
           <div>
             <div className="inst-sigla">PHQ-9</div>
             <div className="inst-name">Patient Health Questionnaire</div>
           </div>
-          <div className="inst-desc">Rastreio e mensuração da gravidade da depressão. Escala Likert de 4 pontos.</div>
+          <div className="inst-desc">Rastreio e mensuração da gravidade da depressão. Escala de frequência de 4 pontos (0–3). Pontuação máxima: 27.</div>
           <div className="inst-footer">
             <span className="inst-meta">9 questões · ~3 min</span>
-            <span className="badge badge-soon">Em breve</span>
+            <span className="badge badge-ativo">Disponível</span>
           </div>
         </div>
 
